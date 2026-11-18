@@ -1,0 +1,16 @@
+name: hola_mundo
+
+on:
+    push:
+        branches: [main, develop, 'feature/**']
+    pull_request:
+        branches: [main, develop]
+    workflow_dispatch:
+
+jobs:
+    saludar:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: echo "Hola mundo"
+            - run: node --version
