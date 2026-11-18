@@ -1,0 +1,42 @@
+name: 03 - Jobs
+
+on:
+    push:
+        branches: [develop, 'feature/**']
+    pull_request:
+        branches: [develop, main]
+    workflow_dispatch:
+
+jobs:
+    test:                                   # job 1: tests
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+            - run: npm ci
+            - run: npm test
+
+    archivos:                               # job 2: a la vez que test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4     # máquina nueva: necesita su checkout
+            - run: test -f README.md
+            - run: test -f GIT.md
+
+    docs:                                   # job 3: espera a los otros dos
+        runs-on: ubuntu-latest
+        needs: [test, archivos]
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+            - run: npm ci
+            - run: npm run docs             # genera docs/ en ESTA máquina
+            - uses: actions/upload-artifact@v4   # por eso se sube aquí
+              with:
+                  name: documentacion
+                  path: docs/
+                  if-no-files-found: error
