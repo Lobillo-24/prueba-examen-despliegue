@@ -1,0 +1,27 @@
+{
+  "name": "prueba-examen-despliegue",
+  "version": "1.0.0",
+  "description": "Esto es una prueba para el examen de despliegue",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node --test",
+    "docs":"jsdoc src -d docs -R README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lobillo-24/prueba-examen-despliegue.git"
+  },
+  "keywords": [],
+  "author": "Juan Antonio López Muñoz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lobillo-24/prueba-examen-despliegue/issues"
+  },
+  "homepage": "https://github.com/Lobillo-24/prueba-examen-despliegue#readme",
+  "devDependencies": {
+    "jsdoc": "^4.0.5"
+  }
+}

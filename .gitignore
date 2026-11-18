@@ -1,0 +1,7 @@
+# .gitignore
+node_modules/
+docs/
+.env
+.env.example
+SECURITY.md
+*.log
